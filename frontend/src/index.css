@@ -1,1 +1,56 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background-color: #34d399;
+    color: #0e3b2e;
+  }
+  :focus-visible {
+    outline: 2px solid #f5b700;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-xs tracking-widest2 uppercase text-cue;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-spotlight text-ink font-body font-semibold
+           px-6 py-3 rounded-sm hover:bg-spotlight-soft transition-colors duration-200;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-cue/40 text-paper font-body font-medium
+           px-6 py-3 rounded-sm hover:border-cue hover:bg-cue/10 transition-colors duration-200;
+  }
+}
+
+/* Barra de níveis de áudio (VU meter) — elemento assinatura, ambiente e discreto */
+.vu-meter {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+.vu-meter span {
+  width: 3px;
+  height: 100%;
+  background: currentColor;
+  transform-origin: bottom;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vu-meter span,
+  .animate-vu,
+  .animate-blink {
+    animation: none !important;
+  }
+}
