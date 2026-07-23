@@ -7,7 +7,7 @@ export const services = [
   { cue: 'Q3', title: 'Sonorização', slug: 'sonorizacao', desc: 'Sistemas de som profissionais dimensionados para cada tipo de espaço e público.' },
   { cue: 'Q4', title: 'Iluminação', slug: 'iluminacao', desc: 'Desenho de luz cénica, robótica e arquitectural para criar atmosfera e impacto.' },
   { cue: 'Q5', title: 'Palcos e Estruturas', slug: 'palcos-e-estruturas', desc: 'Montagem de palcos, coberturas e estruturas certificadas para qualquer escala.' },
-  { cue: 'Q6', title: 'Telões LED', slug: 'teloes-led', desc: 'Ecrãs LED de alta definição para conteúdo visual e transmissão ao vivo no palco.' },
+  { cue: 'Q6', title: 'Tela LED', slug: 'teloes-led', desc: 'Ecrãs LED de alta definição para conteúdo visual e transmissão ao vivo no palco.' },
   { cue: 'Q7', title: 'Live Streaming', slug: 'live-streaming', desc: 'Transmissão multi-câmara em directo para redes sociais e plataformas próprias.' },
   { cue: 'Q8', title: 'Fotografia e Vídeo', slug: 'fotografia-e-video', desc: 'Registo profissional de todo o evento, da pré-produção à entrega final editada.' },
 ];

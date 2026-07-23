@@ -10,7 +10,7 @@ export default function FeaturedArtists() {
           <div>
             <span className="eyebrow !text-forest">Line-up da Agência</span>
             <h2 className="mt-4 font-display text-6xl lg:text-7xl tracking-tightest text-forest uppercase">
-              Artistas
+              Artistas 
             </h2>
           </div>
           <Link to="/artistas" className="inline-flex items-center gap-2 text-forest font-semibold text-sm group">

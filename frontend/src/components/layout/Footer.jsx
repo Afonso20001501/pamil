@@ -61,7 +61,7 @@ export default function Footer() {
       <div className="border-t border-cue/10">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-paper/40 font-mono">
           <span>© {new Date().getFullYear()} PAMIL — TODOS OS DIREITOS RESERVADOS</span>
-          <span>POWERED BY · AFONSO MIQUEIAS</span>
+          <span className="text-spotlight mt-0.5" >POWERED BY · AFONSO MIQUEIAS</span>
         </div>
       </div>
     </footer>
