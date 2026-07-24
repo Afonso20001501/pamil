@@ -1,6 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout.jsx';
 import Home from './pages/Home.jsx';
+import Sobre from './pages/Sobre.jsx';
+import Servicos from './pages/Servicos.jsx';
+import ServicoDetalhe from './pages/ServicoDetalhe.jsx';
+import Artistas from './pages/Artistas.jsx';
+import Eventos from './pages/Eventos.jsx';
+import EventoDetalhe from './pages/EventoDetalhe.jsx';
+import Galeria from './pages/Galeria.jsx';
+import Noticias from './pages/Noticias.jsx';
+import NoticiaDetalhe from './pages/NoticiaDetalhe.jsx';
+import Contactos from './pages/Contactos.jsx';
 
 function EmComBreve({ titulo }) {
   return (
@@ -20,13 +30,16 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sobre-nos" element={<EmComBreve titulo="Sobre Nós" />} />
-          <Route path="/servicos/*" element={<EmComBreve titulo="Serviços" />} />
-          <Route path="/artistas" element={<EmComBreve titulo="Artistas" />} />
-          <Route path="/eventos" element={<EmComBreve titulo="Eventos" />} />
-          <Route path="/galeria" element={<EmComBreve titulo="Galeria" />} />
-          <Route path="/noticias" element={<EmComBreve titulo="Notícias" />} />
-          <Route path="/contactos" element={<EmComBreve titulo="Contactos" />} />
+          <Route path="/sobre-nos" element={<Sobre />} />
+          <Route path="/servicos" element={<Servicos />} />
+          <Route path="/servicos/:slug" element={<ServicoDetalhe />} />
+          <Route path="/artistas" element={<Artistas />} />
+          <Route path="/eventos" element={<Eventos />} />
+          <Route path="/eventos/:slug" element={<EventoDetalhe />} />
+          <Route path="/galeria" element={<Galeria />} />
+          <Route path="/noticias" element={<Noticias titulo="Notícias" />} />
+          <Route path="/noticias/:slug" element={<NoticiaDetalhe />} />
+          <Route path="/contactos" element={<Contactos titulo="Contactos" />} />
           <Route path="/pedido-de-orcamento" element={<EmComBreve titulo="Pedido de Orçamento" />} />
         </Routes>
       </Layout>

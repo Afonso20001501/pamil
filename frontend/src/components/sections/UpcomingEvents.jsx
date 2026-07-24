@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin } from 'lucide-react';
-import { upcomingEvents } from '../../data/mockData.js';
+import { ArrowRight, MapPin, Loader2 } from 'lucide-react';
+import { api } from '../../services/api.js';
+import { useApiData } from '../../hooks/UseApiData.js';
+import { upcomingEvents as mockEvents } from '../../data/mockData.js';
 
 function formatDate(iso) {
   const d = new Date(iso);
@@ -8,6 +10,18 @@ function formatDate(iso) {
 }
 
 export default function UpcomingEvents() {
+  const { data: apiEvents, loading, error } = useApiData(api.getUpcomingEvents, [], []);
+
+  const source = !loading && !error && apiEvents.length > 0 ? apiEvents : mockEvents;
+
+  const items = source.slice(0, 3).map((e) => ({
+    title: e.title,
+    type: e.type ?? e.event_type_display,
+    date: e.date ?? e.date_start,
+    city: e.city,
+    cover: e.cover ?? e.cover_image,
+  }));
+
   return (
     <section className="bg-forest py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,29 +38,37 @@ export default function UpcomingEvents() {
           </Link>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {upcomingEvents.map((e) => (
-            <div key={e.title} className="group bg-forest-dark border border-cue/10 rounded-sm overflow-hidden hover:border-cue/40 transition-colors">
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={e.cover}
-                  alt={e.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3 bg-spotlight text-ink font-mono text-xs font-semibold px-2.5 py-1 rounded-sm">
-                  {formatDate(e.date)}
+        {loading && (
+          <div className="flex items-center gap-2 text-paper/60 py-10">
+            <Loader2 size={16} className="animate-spin" /> A carregar eventos…
+          </div>
+        )}
+
+        {!loading && (
+          <div className="grid lg:grid-cols-3 gap-6">
+            {items.map((e) => (
+              <div key={e.title} className="group bg-forest-dark border border-cue/10 rounded-sm overflow-hidden hover:border-cue/40 transition-colors">
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={e.cover}
+                    alt={e.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-spotlight text-ink font-mono text-xs font-semibold px-2.5 py-1 rounded-sm">
+                    {formatDate(e.date)}
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="font-mono text-[10px] text-cue tracking-widest2 uppercase mb-2">{e.type}</p>
+                  <h3 className="font-body font-semibold text-paper text-xl leading-snug">{e.title}</h3>
+                  <p className="flex items-center gap-1.5 text-paper/50 text-sm mt-3">
+                    <MapPin size={14} /> {e.city}
+                  </p>
                 </div>
               </div>
-              <div className="p-5">
-                <p className="font-mono text-[10px] text-cue tracking-widest2 uppercase mb-2">{e.type}</p>
-                <h3 className="font-body font-semibold text-paper text-xl leading-snug">{e.title}</h3>
-                <p className="flex items-center gap-1.5 text-paper/50 text-sm mt-3">
-                  <MapPin size={14} /> {e.city}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
