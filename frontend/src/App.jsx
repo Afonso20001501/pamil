@@ -11,6 +11,7 @@ import Galeria from './pages/Galeria.jsx';
 import Noticias from './pages/Noticias.jsx';
 import NoticiaDetalhe from './pages/NoticiaDetalhe.jsx';
 import Contactos from './pages/Contactos.jsx';
+import PedidoOrcamento from './pages/PedidoOrcamento.jsx';
 
 function EmComBreve({ titulo }) {
   return (
@@ -40,7 +41,7 @@ export default function App() {
           <Route path="/noticias" element={<Noticias titulo="Notícias" />} />
           <Route path="/noticias/:slug" element={<NoticiaDetalhe />} />
           <Route path="/contactos" element={<Contactos titulo="Contactos" />} />
-          <Route path="/pedido-de-orcamento" element={<EmComBreve titulo="Pedido de Orçamento" />} />
+          <Route path="/pedido-de-orcamento" element={<PedidoOrcamento />} />
         </Routes>
       </Layout>
     </BrowserRouter>

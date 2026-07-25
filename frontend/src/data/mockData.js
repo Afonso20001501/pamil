@@ -9,8 +9,8 @@ export const services = [
   { cue: 'Q5', title: 'Palcos e Estruturas', slug: 'palcos-e-estruturas', desc: 'Montagem de palcos, coberturas e estruturas certificadas para qualquer escala.' },
   { cue: 'Q6', title: 'Tela LED', slug: 'teloes-led', desc: 'Ecrãs LED de alta definição para conteúdo visual e transmissão ao vivo no palco.' },
   { cue: 'Q7', title: 'Live Streaming', slug: 'live-streaming', desc: 'Transmissão multi-câmara em directo para redes sociais e plataformas próprias.' },
-  { cue: 'Q8', title: 'Fotografia e Vídeo', slug: 'fotografia-e-video', desc: 'Registo profissional de todo o evento, da pré-produção à entrega final editada.' },
-];
+  { cue: 'Q8', title: 'Sala de Ensaio e Banda', slug: 'sala-de-ensaio-e-banda', desc: 'Espaço dedicado a ensaios e gravações de artistas.' },
+]; 
 
 export const featuredArtists = [
   { name: 'Nzinga M.', category: 'Cantora / Semba', photo: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400&auto=format&fit=crop' },

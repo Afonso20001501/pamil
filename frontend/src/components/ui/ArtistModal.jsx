@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { X, Instagram, Facebook, Youtube, Music } from 'lucide-react';
 
 export default function ArtistModal({ artist, onClose }) {
@@ -108,12 +109,12 @@ export default function ArtistModal({ artist, onClose }) {
             )}
 
             {/* Solicitar artista */}
-            <a
-              href="/pedido-de-orcamento"
+            <Link
+              to={`/pedido-de-orcamento?artista=${encodeURIComponent(artist.name)}`}
               className="btn-primary mt-8 inline-flex text-sm !py-2.5"
             >
               Solicitar Este Artista
-            </a>
+            </Link>
           </div>
         </div>
       </div>
