@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Loader2 } from 'lucide-react';
 import { api } from '../../services/api.js';
-import { useApiData } from '../../hooks/UseApiData.js';
+import { useApiData } from '../../hooks/useApiData.js';
 import { services as mockServices } from '../../data/mockData.js';
 
 export default function Services() {

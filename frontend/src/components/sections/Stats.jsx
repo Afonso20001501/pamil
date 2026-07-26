@@ -1,6 +1,6 @@
 import { Loader2 } from 'lucide-react';
 import { api } from '../../services/api.js';
-import { useApiData } from '../../hooks/UseApiData.js';
+import { useApiData } from '../../hooks/useApiData.js';
 import { stats as mockStats } from '../../data/mockData.js';
 import VuMeter from '../ui/VuMeter.jsx';
 

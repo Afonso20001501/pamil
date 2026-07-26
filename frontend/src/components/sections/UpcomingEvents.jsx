@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Loader2 } from 'lucide-react';
 import { api } from '../../services/api.js';
-import { useApiData } from '../../hooks/UseApiData.js';
+import { useApiData } from '../../hooks/useApiData.js';
 import { upcomingEvents as mockEvents } from '../../data/mockData.js';
 
 function formatDate(iso) {
