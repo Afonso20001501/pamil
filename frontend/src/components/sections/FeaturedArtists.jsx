@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { api } from '../../services/api.js';
 import { useApiData } from '../../hooks/useApiData.js';
 import { featuredArtists as mockArtists } from '../../data/mockData.js';
 
 export default function FeaturedArtists() {
+  const { t } = useTranslation();
   const { data: apiArtists, loading, error } = useApiData(api.getFeaturedArtists, [], []);
 
   const source = !loading && !error && apiArtists.length > 0 ? apiArtists : mockArtists;
@@ -20,20 +22,20 @@ export default function FeaturedArtists() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <span className="eyebrow !text-forest">Line-up da Agência</span>
+            <span className="eyebrow !text-forest">{t('home.artistsEyebrow')}</span>
             <h2 className="mt-4 font-display text-6xl lg:text-7xl tracking-tightest text-forest uppercase">
-              Artistas
+              {t('home.artistsTitle')}
             </h2>
           </div>
           <Link to="/artistas" className="inline-flex items-center gap-2 text-forest font-semibold text-sm group">
-            Ver todos os artistas
+            {t('home.viewAllArtists')}
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
         {loading && (
           <div className="flex items-center gap-2 text-sage py-10">
-            <Loader2 size={16} className="animate-spin" /> A carregar artistas…
+            <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
           </div>
         )}
 

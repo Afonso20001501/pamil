@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Loader2, Play } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useApiData } from '../hooks/useApiData.js';
@@ -6,15 +7,16 @@ import { galleryItems as mockGallery } from '../data/mockData.js';
 import VuMeter from '../components/ui/VuMeter.jsx';
 import GalleryModal from '../components/ui/GalleryModal.jsx';
 
-const filters = [
-  { value: '', label: 'Tudo' },
-  { value: 'imagem', label: 'Fotos' },
-  { value: 'video', label: 'Vídeos' },
-];
-
 export default function Galeria() {
+  const { t } = useTranslation();
   const [mediaType, setMediaType] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const filters = [
+    { value: '', label: t('gallery.all') },
+    { value: 'imagem', label: t('gallery.photos') },
+    { value: 'video', label: t('gallery.videos') },
+  ];
 
   const query = mediaType ? `?media_type=${mediaType}` : '';
   const { data: apiItems, loading, error } = useApiData(
@@ -35,9 +37,9 @@ export default function Galeria() {
           <VuMeter bars={30} className="h-3 text-cue/50" />
         </div>
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <span className="eyebrow">Registo de Palco</span>
+          <span className="eyebrow">{t('gallery.eyebrow')}</span>
           <h1 className="mt-4 font-display text-6xl lg:text-8xl tracking-tightest text-paper uppercase">
-            Galeria
+            {t('gallery.title')}
           </h1>
         </div>
       </section>
@@ -62,12 +64,12 @@ export default function Galeria() {
 
           {loading && (
             <div className="flex items-center gap-2 text-sage py-10">
-              <Loader2 size={16} className="animate-spin" /> A carregar galeria…
+              <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
             </div>
           )}
 
           {!loading && source.length === 0 && (
-            <p className="text-sage py-10">Nenhum item encontrado.</p>
+            <p className="text-sage py-10">{t('gallery.noResults')}</p>
           )}
 
           {!loading && source.length > 0 && (

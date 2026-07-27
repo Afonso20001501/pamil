@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, MapPin, Loader2 } from 'lucide-react';
 import { api } from '../../services/api.js';
 import { useApiData } from '../../hooks/useApiData.js';
@@ -10,6 +11,7 @@ function formatDate(iso) {
 }
 
 export default function UpcomingEvents() {
+  const { t } = useTranslation();
   const { data: apiEvents, loading, error } = useApiData(api.getUpcomingEvents, [], []);
 
   const source = !loading && !error && apiEvents.length > 0 ? apiEvents : mockEvents;
@@ -27,20 +29,20 @@ export default function UpcomingEvents() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <span className="eyebrow">Próximas Datas</span>
+            <span className="eyebrow">{t('home.eventsEyebrow')}</span>
             <h2 className="mt-4 font-display text-6xl lg:text-7xl tracking-tightest text-paper uppercase">
-              Eventos
+              {t('home.eventsTitle')}
             </h2>
           </div>
           <Link to="/eventos" className="inline-flex items-center gap-2 text-paper font-semibold text-sm group">
-            Ver agenda completa
+            {t('home.viewAllEvents')}
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
         {loading && (
           <div className="flex items-center gap-2 text-paper/60 py-10">
-            <Loader2 size={16} className="animate-spin" /> A carregar eventos…
+            <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
           </div>
         )}
 

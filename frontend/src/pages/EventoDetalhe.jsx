@@ -1,18 +1,21 @@
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, Loader2, MapPin, Calendar } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useApiData } from '../hooks/useApiData.js';
 import { allEvents as mockEvents } from '../data/mockData.js';
 import CTAQuote from '../components/sections/CTAQuote.jsx';
 
-function formatFullDate(iso) {
+function formatFullDate(iso, locale) {
   const d = new Date(iso);
-  return d.toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' }) +
-    ' · ' + d.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
+  return d.toLocaleDateString(locale, { day: '2-digit', month: 'long', year: 'numeric' }) +
+    ' · ' + d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
 }
 
 export default function EventoDetalhe() {
+  const { t, i18n } = useTranslation();
   const { slug } = useParams();
+  const dateLocale = i18n.language === 'en' ? 'en-GB' : 'pt-PT';
 
   const { data: apiEvent, loading, error } = useApiData(
     () => api.getEventBySlug(slug),
@@ -26,7 +29,7 @@ export default function EventoDetalhe() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center text-sage gap-2">
-        <Loader2 size={18} className="animate-spin" /> A carregar…
+        <Loader2 size={18} className="animate-spin" /> {t('common.loading')}
       </div>
     );
   }
@@ -34,9 +37,9 @@ export default function EventoDetalhe() {
   if (!event) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-6">
-        <h1 className="font-display text-5xl text-forest tracking-tightest">Evento não encontrado</h1>
+        <h1 className="font-display text-5xl text-forest tracking-tightest">{t('events.notFoundTitle')}</h1>
         <Link to="/eventos" className="btn-primary mt-6 inline-flex">
-          Ver todos os eventos
+          {t('events.allEvents')}
         </Link>
       </div>
     );
@@ -52,7 +55,7 @@ export default function EventoDetalhe() {
 
         <div className="max-w-4xl mx-auto px-6 -mt-24 relative pb-16">
           <Link to="/eventos" className="inline-flex items-center gap-2 text-paper/60 hover:text-cue text-sm mb-6 transition-colors">
-            <ArrowLeft size={15} /> Todos os eventos
+            <ArrowLeft size={15} /> {t('events.allEvents')}
           </Link>
 
           <span className="font-mono text-[11px] text-cue tracking-widest2 uppercase">
@@ -63,8 +66,12 @@ export default function EventoDetalhe() {
           </h1>
 
           <div className="flex flex-wrap gap-6 mt-6 text-paper/60 text-sm">
-            <span className="flex items-center gap-2"><Calendar size={16} className="text-spotlight" /> {formatFullDate(event.date_start)}</span>
-            <span className="flex items-center gap-2"><MapPin size={16} className="text-spotlight" /> {event.location}, {event.city}</span>
+            <span className="flex items-center gap-2">
+              <Calendar size={16} className="text-spotlight" /> {formatFullDate(event.date_start, dateLocale)}
+            </span>
+            <span className="flex items-center gap-2">
+              <MapPin size={16} className="text-spotlight" /> {event.location}, {event.city}
+            </span>
           </div>
 
           <p className="mt-6 text-paper/70 text-lg leading-relaxed max-w-2xl">
@@ -73,7 +80,9 @@ export default function EventoDetalhe() {
 
           {event.services_used?.length > 0 && (
             <div className="mt-8">
-              <span className="font-mono text-[10px] text-spotlight tracking-widest2 uppercase">Serviços neste evento</span>
+              <span className="font-mono text-[10px] text-spotlight tracking-widest2 uppercase">
+                {t('events.servicesUsed')}
+              </span>
               <div className="flex flex-wrap gap-2 mt-3">
                 {event.services_used.map((s) => (
                   <span key={s.title} className="border border-cue/20 text-paper/70 text-xs px-3 py-1.5 rounded-sm">
@@ -86,7 +95,9 @@ export default function EventoDetalhe() {
 
           {event.artists?.length > 0 && (
             <div className="mt-8">
-              <span className="font-mono text-[10px] text-spotlight tracking-widest2 uppercase">Artistas no palco</span>
+              <span className="font-mono text-[10px] text-spotlight tracking-widest2 uppercase">
+                {t('events.artistsOnStage')}
+              </span>
               <div className="flex flex-wrap gap-4 mt-4">
                 {event.artists.map((a) => (
                   <div key={a.slug ?? a.name} className="flex items-center gap-3">
@@ -99,7 +110,7 @@ export default function EventoDetalhe() {
           )}
 
           <Link to="/pedido-de-orcamento" className="btn-primary mt-10 inline-flex">
-            Quero um Evento Assim <ArrowRight size={16} />
+            {t('events.wantEventLikeThis')} <ArrowRight size={16} />
           </Link>
         </div>
       </section>

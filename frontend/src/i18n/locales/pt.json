@@ -1,0 +1,201 @@
+{
+  "nav": {
+    "services": "Serviços",
+    "about": "Sobre Nós",
+    "artists": "Artistas",
+    "events": "Eventos",
+    "gallery": "Galeria",
+    "news": "Notícias",
+    "contact": "Contactos",
+    "quote": "Pedir Orçamento"
+  },
+  "common": {
+    "loading": "A carregar…",
+    "readMore": "Ler mais",
+    "viewAll": "Ver todos",
+    "requestQuote": "Pedir Orçamento",
+    "notFound": "Não encontrado",
+    "backToList": "Voltar à lista"
+  },
+  "home": {
+    "eyebrow": "Produção de Eventos & Gestão de Artistas",
+    "heroLine1": "O seu",
+    "heroLine2": "evento,",
+    "heroLine3": "no ar.",
+    "heroSubtitle": "De Luanda para todo o país: concepção, artistas, som, luz, palco e transmissão — cada deixa da sua produção, cuidada por uma só equipa.",
+    "ctaQuote": "Pedir Orçamento",
+    "ctaEvents": "Ver Eventos",
+    "rundownTitle": "Rundown — Dia do Show",
+    "rundownItems": {
+      "loadIn": "Stage and rig load-in",
+      "soundcheck": "Sound and lighting checked",
+      "doors": "Doors open to the public",
+      "showtime": "Your event, live"
+    },
+    "servicesEyebrow": "Ordem de Montagem",
+    "servicesTitle1": "Cada deixa,",
+    "servicesTitle2": "coberta.",
+    "servicesSubtitle": "Do briefing ao encerramento das luzes, esta é a sequência real com que construímos um evento — cada serviço entra exactamente quando o show precisa dele.",
+    "statsEyebrow": "Ficha Técnica",
+    "artistsEyebrow": "Line-up da Agência",
+    "artistsTitle": "Artistas",
+    "viewAllArtists": "Ver todos os artistas",
+    "eventsEyebrow": "Próximas Datas",
+    "eventsTitle": "Eventos",
+    "viewAllEvents": "Ver agenda completa",
+    "ctaEyebrow": "Vamos ao palco",
+    "ctaTitle": "Pronto para o seu showtime?",
+    "ctaSubtitle": "Conte-nos o tipo de evento, data e serviços que precisa — respondemos com uma proposta em até 12 horas.",
+    "ctaButton": "Pedir Orçamento Agora"
+  },
+  "about": {
+    "eyebrow": "Sobre Nós",
+    "pillarsEyebrow": "A Nossa Direcção de Palco",
+    "pillarsTitle": "O que nos guia",
+    "mission": "Missão",
+    "vision": "Visão",
+    "values": "Valores"
+  },
+  "services": {
+    "eyebrow": "Ordem de Montagem",
+    "title": "Serviços",
+    "subtitle": "Cada disciplina de que um evento ao vivo precisa, coberta por uma só equipa, na ordem real em que entram em acção.",
+    "requestThisService": "Pedir Orçamento Deste Serviço",
+    "allServices": "Todos os serviços",
+    "notFoundTitle": "Serviço não encontrado"
+  },
+  "artists": {
+    "eyebrow": "Line-up da Agência",
+    "title": "Artistas",
+    "subtitle": "Artistas representados pela nossa agência, disponíveis para contratação em eventos privados, corporativos e festivais.",
+    "all": "Todos",
+    "unavailable": "Indisponível",
+    "available": "Disponível",
+    "noResults": "Nenhum artista encontrado nesta categoria.",
+    "requestThisArtist": "Solicitar Este Artista",
+    "categories": {
+      "dj": "DJ",
+      "banda": "Banda",
+      "cantor": "Cantor/Cantora",
+      "danca": "Grupo de Dança",
+      "humorista": "Humorista"
+    }
+  },
+  "events": {
+    "eyebrow": "Agenda",
+    "title": "Eventos",
+    "upcoming": "Próximos",
+    "past": "Passados",
+    "all": "Todos",
+    "noResults": "Nenhum evento encontrado com estes filtros.",
+    "notFoundTitle": "Evento não encontrado",
+    "allEvents": "Todos os eventos",
+    "servicesUsed": "Serviços neste evento",
+    "artistsOnStage": "Artistas no palco",
+    "wantEventLikeThis": "Quero um Evento Assim",
+    "types": {
+      "corporativo": "Corporativo",
+      "show": "Show/Concerto",
+      "festival": "Festival",
+      "privado": "Evento Privado",
+      "casamento": "Casamento"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Registo de Palco",
+    "title": "Galeria",
+    "all": "Tudo",
+    "photos": "Fotos",
+    "videos": "Vídeos",
+    "noResults": "Nenhum item encontrado."
+  },
+  "news": {
+    "eyebrow": "Bastidores & Actualidade",
+    "title": "Notícias",
+    "noResults": "Ainda não há notícias publicadas.",
+    "allNews": "Todas as notícias",
+    "notFoundTitle": "Notícia não encontrada"
+  },
+  "contact": {
+    "eyebrow": "Fale Connosco",
+    "title": "Contactos",
+    "subtitle": "Dúvidas gerais, parcerias ou candidaturas — esta é a via directa. Para pedidos de evento, usa antes o Pedido de Orçamento.",
+    "directLine": "Linha Directa",
+    "phone": "Telefone",
+    "email": "E-mail",
+    "address": "Endereço",
+    "hours": "Horário",
+    "hoursValue": "Segunda a Sexta · 09h00 – 18h00",
+    "fullName": "Nome completo",
+    "subject": "Assunto",
+    "message": "Mensagem",
+    "sending": "A enviar…",
+    "send": "Enviar Mensagem",
+    "success": "Mensagem enviada. Vamos responder em breve.",
+    "error": "Não foi possível enviar. Tenta novamente."
+  },
+  "quote": {
+    "eyebrow": "Pedido de Orçamento",
+    "title": "Vamos ao palco",
+    "requestingArtist": "A solicitar orçamento para",
+    "steps": {
+      "eventType": "Tipo de Evento",
+      "services": "Serviços",
+      "details": "Detalhes",
+      "contact": "Contacto"
+    },
+    "step1Question": "Que tipo de evento vamos produzir?",
+    "step2Question": "Que serviços precisas?",
+    "step2Hint": "Podes escolher mais do que um.",
+    "step3Title": "Detalhes do evento",
+    "eventDate": "Data prevista",
+    "guests": "Nº de convidados (estimado)",
+    "location": "Local previsto",
+    "budgetRange": "Faixa de orçamento",
+    "step4Title": "Como te contactamos?",
+    "phone": "Telefone",
+    "company": "Empresa (opcional)",
+    "additionalMessage": "Mensagem adicional",
+    "back": "Voltar",
+    "continue": "Continuar",
+    "confirm": "Confirmar Pedido",
+    "sending": "A enviar…",
+    "sendError": "Não foi possível enviar. Verifica os dados e tenta novamente.",
+    "summaryTitle": "Resumo do Pedido",
+    "summaryType": "Tipo",
+    "summaryServices": "Serviços",
+    "summaryDate": "Data",
+    "summaryLocation": "Local",
+    "summaryBudget": "Orçamento",
+    "summaryName": "Nome",
+    "summaryArtist": "Artista Solicitado",
+    "fullName": "Nome completo",
+    "email": "E-mail",
+    "eventTypes": {
+      "corporativo": "Corporativo",
+      "show": "Show/Concerto",
+      "festival": "Festival",
+      "casamento": "Casamento",
+      "privado": "Evento Privado",
+      "outro": "Outro"
+    },
+    "budgetOptions": {
+      "ate_500k": "Até 500.000 Kz",
+      "500k_2m": "500.000 – 2.000.000 Kz",
+      "2m_5m": "2.000.000 – 5.000.000 Kz",
+      "acima_5m": "Acima de 5.000.000 Kz",
+      "a_definir": "Ainda não sei"
+    },
+    "successEyebrow": "Pedido Recebido",
+    "successTitle": "No ar em breve.",
+    "successText": "Recebemos o teu pedido. A nossa equipa entra em contacto em até 48 horas com uma proposta à medida do teu evento.",
+    "successHint": "O comprovativo em PDF foi descarregado e uma conversa de WhatsApp foi aberta — se não viste nenhum dos dois, o teu navegador pode ter bloqueado. Usa os botões abaixo.",
+    "downloadPdf": "Descarregar Comprovativo (PDF)",
+    "openWhatsapp": "Abrir WhatsApp"
+  },
+  "footer": {
+    "tagline": "Produção de eventos e gestão de artistas em Angola. Do briefing ao encerramento das luzes — cuidamos de cada deixa.",
+    "company": "Empresa",
+    "rights": "TODOS OS DIREITOS RESERVADOS"
+  }
+}

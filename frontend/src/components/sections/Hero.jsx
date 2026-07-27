@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
 import VuMeter from '../ui/VuMeter.jsx';
 
-const rundown = [
-  { time: '14H00', label: 'LOAD-IN', desc: 'Montagem de palco e estruturas' },
-  { time: '17H00', label: 'SOUNDCHECK', desc: 'Sonorização e iluminação afinadas' },
-  { time: '19H00', label: 'DOORS', desc: 'Abertura ao público' },
-  { time: '20H30', label: 'SHOWTIME', desc: 'O seu evento, no ar' },
-];
-
 export default function Hero() {
+  const { t } = useTranslation();
+
+  const rundown = [
+    { time: '14H00', label: 'LOAD-IN', desc: t('home.rundownItems.loadIn') },
+    { time: '17H00', label: 'SOUNDCHECK', desc: t('home.rundownItems.soundcheck') },
+    { time: '19H00', label: 'DOORS', desc: t('home.rundownItems.doors') },
+    { time: '20H30', label: 'SHOWTIME', desc: t('home.rundownItems.showtime') },
+  ];
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-forest-dark">
-      
       {/* BACKGROUND IMAGE */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -32,40 +34,35 @@ export default function Hero() {
 
       {/* CONTEÚDO */}
       <div className="relative z-10">
-        
         {/* faixa de VU meter ambiente no topo */}
         <div className="border-b border-cue/10 py-2.5 flex justify-center">
           <VuMeter bars={40} className="h-3 text-cue/50" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24 grid lg:grid-cols-[1.2fr_0.8fr] gap-14 items-center min-h-[calc(100vh-50px)]">
-
           {/* TEXTO */}
           <div className="animate-riseIn">
-            <span className="eyebrow">
-              Produção de Eventos & Gestão de Artistas
-            </span>
+            <span className="eyebrow">{t('home.eyebrow')}</span>
 
             <h1 className="mt-5 font-display text-[15vw] leading-[0.85] lg:text-8xl tracking-tightest text-paper uppercase">
-              O seu
+              {t('home.heroLine1')}
               <br />
-              evento,
+              {t('home.heroLine2')}
               <br />
-              <span className="text-cue">no ar.</span>
+              <span className="text-cue">{t('home.heroLine3')}</span>
             </h1>
 
             <p className="mt-6 text-paper/70 text-lg max-w-lg leading-relaxed">
-              Do Lubango para todo o país: concepção, artistas, som, luz, palco, lela Led, 
-              transmissão e sala de ensaio  — cada deixa da sua produção, cuidada por uma só equipa.
+              {t('home.heroSubtitle')}
             </p>
 
             <div className="mt-9 flex flex-wrap gap-4">
               <Link to="/pedido-de-orcamento" className="btn-primary">
-                Pedir Orçamento <ArrowRight size={16} />
+                {t('home.ctaQuote')} <ArrowRight size={16} />
               </Link>
 
               <Link to="/eventos" className="btn-outline">
-                Ver Eventos
+                {t('home.ctaEvents')}
               </Link>
             </div>
           </div>
@@ -73,11 +70,11 @@ export default function Hero() {
           {/* RUNDOWN */}
           <div
             className="relative border border-cue/20 bg-forest-dark/50 backdrop-blur-sm rounded-sm animate-riseIn"
-            style={{ animationDelay: "0.15s" }}
+            style={{ animationDelay: '0.15s' }}
           >
             <div className="flex items-center justify-between px-5 py-3 border-b border-cue/15">
               <span className="font-mono text-[11px] text-spotlight tracking-widest2 uppercase">
-                Rundown — Dia do Show
+                {t('home.rundownTitle')}
               </span>
 
               <span className="relative flex h-2 w-2">
@@ -90,14 +87,8 @@ export default function Hero() {
                 <li
                   key={r.label}
                   className={`flex items-center gap-4 px-5 py-4 ${
-                    i !== rundown.length - 1
-                      ? "border-b border-cue/10"
-                      : ""
-                  } ${
-                    i === rundown.length - 1
-                      ? "bg-cue/10"
-                      : ""
-                  }`}
+                    i !== rundown.length - 1 ? 'border-b border-cue/10' : ''
+                  } ${i === rundown.length - 1 ? 'bg-cue/10' : ''}`}
                 >
                   <span className="font-mono text-xs text-paper/50 w-14 shrink-0">
                     {r.time}
@@ -106,27 +97,20 @@ export default function Hero() {
                   <div className="min-w-0">
                     <p
                       className={`font-body font-semibold text-sm tracking-wide ${
-                        i === rundown.length - 1
-                          ? "text-cue"
-                          : "text-paper/90"
+                        i === rundown.length - 1 ? 'text-cue' : 'text-paper/90'
                       }`}
                     >
                       {r.label}
                     </p>
 
-                    <p className="text-xs text-paper/50 truncate">
-                      {r.desc}
-                    </p>
+                    <p className="text-xs text-paper/50 truncate">{r.desc}</p>
                   </div>
                 </li>
               ))}
             </ul>
           </div>
-
         </div>
       </div>
     </section>
   );
 }
-
-

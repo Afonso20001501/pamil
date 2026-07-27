@@ -1,4 +1,5 @@
 import { Loader2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { api } from '../services/api.js';
 import { siteInfo as mockInfo } from '../data/mockData.js';
 import Stats from '../components/sections/Stats.jsx';
@@ -7,14 +8,15 @@ import VuMeter from '../components/ui/VuMeter.jsx';
 import { useApiData } from '../hooks/useApiData.js';
 
 export default function Sobre() {
+  const { t } = useTranslation();
   const { data: settings, loading, error } = useApiData(api.getSiteSettings, null, []);
 
   const info = !loading && !error && settings ? settings : mockInfo;
 
   const pillars = [
-    { cue: 'Q1', title: 'Missão', text: info.mission },
-    { cue: 'Q2', title: 'Visão', text: info.vision },
-    { cue: 'Q3', title: 'Valores', text: info.values },
+    { cue: 'Q1', title: t('about.mission'), text: info.mission },
+    { cue: 'Q2', title: t('about.vision'), text: info.vision },
+    { cue: 'Q3', title: t('about.values'), text: info.values },
   ];
 
   return (
@@ -25,14 +27,14 @@ export default function Sobre() {
           <VuMeter bars={30} className="h-3 text-cue/50" />
         </div>
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <span className="eyebrow">Sobre Nós</span>
+          <span className="eyebrow">{t('about.eyebrow')}</span>
           <h1 className="mt-4 font-display text-6xl lg:text-8xl tracking-tightest text-paper uppercase leading-[0.9]">
             {info.company_name ?? 'A Empresa'}
           </h1>
 
           {loading ? (
             <div className="flex items-center justify-center gap-2 text-paper/50 mt-8">
-              <Loader2 size={16} className="animate-spin" /> A carregar…
+              <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
             </div>
           ) : (
             <p className="mt-8 text-paper/60 text-lg leading-relaxed">
@@ -46,9 +48,9 @@ export default function Sobre() {
       <section className="bg-paper py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-14">
-            <span className="eyebrow !text-forest">A Nossa Direcção de Palco</span>
+            <span className="eyebrow !text-forest">{t('about.pillarsEyebrow')}</span>
             <h2 className="mt-4 font-display text-6xl lg:text-7xl tracking-tightest text-forest uppercase">
-              O que nos guia
+              {t('about.pillarsTitle')}
             </h2>
           </div>
 

@@ -1,10 +1,12 @@
 import { Loader2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { api } from '../../services/api.js';
 import { useApiData } from '../../hooks/useApiData.js';
 import { stats as mockStats } from '../../data/mockData.js';
 import VuMeter from '../ui/VuMeter.jsx';
 
 export default function Stats() {
+  const { t } = useTranslation();
   const { data: settings, loading, error } = useApiData(api.getSiteSettings, null, []);
 
   const items =
@@ -22,12 +24,12 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-3 mb-12">
           <VuMeter bars={5} className="h-3 text-cue" />
-          <span className="eyebrow">Ficha Técnica</span>
+          <span className="eyebrow">{t('home.statsEyebrow')}</span>
         </div>
 
         {loading ? (
           <div className="flex items-center gap-2 text-paper/60 py-4">
-            <Loader2 size={16} className="animate-spin" /> A carregar dados…
+            <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
           </div>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">

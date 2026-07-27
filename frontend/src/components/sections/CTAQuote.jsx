@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
 import VuMeter from '../ui/VuMeter.jsx';
 
 export default function CTAQuote() {
-  return (
-    <section className="  relative overflow-hidden bg-forest-dark py-24 lg:py-32">
+  const { t } = useTranslation();
 
+  return (
+    <section className="relative overflow-hidden bg-forest-dark py-24 lg:py-32">
       {/* BACKGROUND IMAGE */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -22,23 +24,22 @@ export default function CTAQuote() {
 
       {/* GRADIENTE INFERIOR */}
       <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-forest-dark/30" />
-      
+
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative bg-forest-dark rounded-sm px-8 py-16 lg:py-20 text-center overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.07] pointer-events-none">
             <VuMeter bars={60} className="h-40 text-cue" />
           </div>
           <div className="relative">
-            <span className="eyebrow">Vamos ao palco</span>
+            <span className="eyebrow">{t('home.ctaEyebrow')}</span>
             <h2 className="mt-4 font-display text-6xl lg:text-8xl tracking-tightest text-paper uppercase max-w-3xl mx-auto leading-[0.9]">
-              Pronto para o seu showtime?
+              {t('home.ctaTitle')}
             </h2>
             <p className="mt-6 text-paper/60 max-w-xl mx-auto">
-              Conte-nos o tipo de evento, data e serviços que precisa —
-              respondemos com uma proposta em até 12 horas.
+              {t('home.ctaSubtitle')}
             </p>
             <Link to="/pedido-de-orcamento" className="btn-primary mt-9 inline-flex">
-              Pedir Orçamento Agora <ArrowRight size={16} />
+              {t('home.ctaButton')} <ArrowRight size={16} />
             </Link>
           </div>
         </div>

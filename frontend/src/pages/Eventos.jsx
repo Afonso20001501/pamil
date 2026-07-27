@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { MapPin, Loader2 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useApiData } from '../hooks/useApiData.js';
-import { allEvents as mockEvents, eventTypes } from '../data/mockData.js';
+import { allEvents as mockEvents } from '../data/mockData.js';
 import VuMeter from '../components/ui/VuMeter.jsx';
 
 function formatDate(iso) {
@@ -11,15 +12,25 @@ function formatDate(iso) {
   return d.toLocaleDateString('pt-PT', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
 }
 
-const statusTabs = [
-  { value: 'proximos', label: 'Próximos' },
-  { value: 'passados', label: 'Passados' },
-  { value: '', label: 'Todos' },
-];
-
 export default function Eventos() {
+  const { t } = useTranslation();
   const [status, setStatus] = useState('proximos');
   const [type, setType] = useState('');
+
+  const statusTabs = [
+    { value: 'proximos', label: t('events.upcoming') },
+    { value: 'passados', label: t('events.past') },
+    { value: '', label: t('events.all') },
+  ];
+
+  const eventTypeOptions = [
+    { value: '', label: t('events.all') },
+    { value: 'corporativo', label: t('events.types.corporativo') },
+    { value: 'show', label: t('events.types.show') },
+    { value: 'festival', label: t('events.types.festival') },
+    { value: 'privado', label: t('events.types.privado') },
+    { value: 'casamento', label: t('events.types.casamento') },
+  ];
 
   const params = new URLSearchParams();
   if (status) params.set('status', status);
@@ -53,9 +64,9 @@ export default function Eventos() {
           <VuMeter bars={30} className="h-3 text-cue/50" />
         </div>
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <span className="eyebrow">Agenda</span>
+          <span className="eyebrow">{t('events.eyebrow')}</span>
           <h1 className="mt-4 font-display text-6xl lg:text-8xl tracking-tightest text-paper uppercase">
-            Eventos
+            {t('events.title')}
           </h1>
         </div>
       </section>
@@ -64,17 +75,17 @@ export default function Eventos() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12 pb-8 border-b border-ink/10">
             <div className="flex gap-2">
-              {statusTabs.map((t) => (
+              {statusTabs.map((tab) => (
                 <button
-                  key={t.value}
-                  onClick={() => setStatus(t.value)}
+                  key={tab.value}
+                  onClick={() => setStatus(tab.value)}
                   className={`font-mono text-xs tracking-widest2 uppercase px-4 py-2 rounded-sm border transition-colors ${
-                    status === t.value
+                    status === tab.value
                       ? 'bg-forest text-paper border-forest'
                       : 'border-ink/15 text-sage hover:border-forest hover:text-forest'
                   }`}
                 >
-                  {t.label}
+                  {tab.label}
                 </button>
               ))}
             </div>
@@ -84,20 +95,20 @@ export default function Eventos() {
               onChange={(e) => setType(e.target.value)}
               className="font-mono text-xs tracking-widest2 uppercase px-4 py-2 rounded-sm border border-ink/15 text-sage bg-paper"
             >
-              {eventTypes.map((t) => (
-                <option key={t.value} value={t.value}>{t.label}</option>
+              {eventTypeOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
             </select>
           </div>
 
           {loading && (
             <div className="flex items-center gap-2 text-sage py-10">
-              <Loader2 size={16} className="animate-spin" /> A carregar eventos…
+              <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
             </div>
           )}
 
           {!loading && source.length === 0 && (
-            <p className="text-sage py-10">Nenhum evento encontrado com estes filtros.</p>
+            <p className="text-sage py-10">{t('events.noResults')}</p>
           )}
 
           {!loading && source.length > 0 && (

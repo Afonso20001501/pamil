@@ -1,21 +1,28 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { services } from '../../data/mockData.js';
-import PamilLogo from "../../assets/pamil.png";
+import PamilLogo from '../../assets/pamil.png';
+import LanguageSwitcher from '../ui/LanguageSwitcher.jsx';
 
-const navLinks = [
-  { label: 'Sobre Nós', to: '/sobre-nos' },
-  { label: 'Artistas', to: '/artistas' },
-  { label: 'Eventos', to: '/eventos' },
-  { label: 'Galeria', to: '/galeria' },
-  { label: 'Notícias', to: '/noticias' },
-  { label: 'Contactos', to: '/contactos' },
-];
+function getNavLinks(t) {
+  return [
+    { label: t('nav.about'), to: '/sobre-nos' },
+    { label: t('nav.artists'), to: '/artistas' },
+    { label: t('nav.events'), to: '/eventos' },
+    { label: t('nav.gallery'), to: '/galeria' },
+    { label: t('nav.news'), to: '/noticias' },
+    { label: t('nav.contact'), to: '/contactos' },
+  ];
+}
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+
+  const navLinks = getNavLinks(t);
 
   return (
     <header className="sticky top-0 z-50 bg-forest-dark/95 backdrop-blur border-b border-cue/10">
@@ -38,7 +45,7 @@ export default function Navbar() {
             onMouseLeave={() => setServicesOpen(false)}
           >
             <button className="flex items-center gap-1 text-paper/90 hover:text-cue text-sm font-medium transition-colors">
-              Serviços <ChevronDown size={14} />
+              {t('nav.services')} <ChevronDown size={14} />
             </button>
             {servicesOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-72">
@@ -72,8 +79,10 @@ export default function Navbar() {
             </NavLink>
           ))}
 
+          <LanguageSwitcher />
+
           <Link to="/pedido-de-orcamento" className="btn-primary text-sm !py-2.5">
-            Pedir Orçamento
+            {t('nav.quote')}
           </Link>
         </div>
 
@@ -88,7 +97,7 @@ export default function Navbar() {
 
       {open && (
         <div className="lg:hidden bg-forest-dark border-t border-cue/10 px-6 py-6 flex flex-col gap-4">
-          <span className="eyebrow">Serviços</span>
+          <span className="eyebrow">{t('nav.services')}</span>
           <div className="grid grid-cols-2 gap-2 mb-2">
             {services.map((s) => (
               <Link
@@ -107,8 +116,13 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+
+          <div className="pt-2">
+            <LanguageSwitcher />
+          </div>
+
           <Link to="/pedido-de-orcamento" className="btn-primary justify-center mt-2" onClick={() => setOpen(false)}>
-            Pedir Orçamento
+            {t('nav.quote')}
           </Link>
         </div>
       )}

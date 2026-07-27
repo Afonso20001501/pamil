@@ -1,0 +1,201 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About Us",
+    "artists": "Artists",
+    "events": "Events",
+    "gallery": "Gallery",
+    "news": "News",
+    "contact": "Contact",
+    "quote": "Request a Quote"
+  },
+  "common": {
+    "loading": "Loading…",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "requestQuote": "Request a Quote",
+    "notFound": "Not found",
+    "backToList": "Back to list"
+  },
+  "home": {
+    "eyebrow": "Event Production & Artist Management",
+    "heroLine1": "Your",
+    "heroLine2": "event,",
+    "heroLine3": "live.",
+    "heroSubtitle": "From Luanda to the whole country: concept, artists, sound, light, staging and streaming — every cue of your production, handled by one team.",
+    "ctaQuote": "Request a Quote",
+    "ctaEvents": "View Events",
+    "rundownTitle": "Rundown — Showday",
+    "rundownItems": {
+      "loadIn": "Stage and rig load-in",
+      "soundcheck": "Sound and lighting checked",
+      "doors": "Doors open to the public",
+      "showtime": "Your event, live"
+    },
+    "servicesEyebrow": "Assembly Order",
+    "servicesTitle1": "Every cue,",
+    "servicesTitle2": "covered.",
+    "servicesSubtitle": "From briefing to the last light going out, this is the real sequence we use to build an event — each service steps in exactly when the show needs it.",
+    "statsEyebrow": "Technical Sheet",
+    "artistsEyebrow": "Agency Line-up",
+    "artistsTitle": "Artists",
+    "viewAllArtists": "View all artists",
+    "eventsEyebrow": "Upcoming Dates",
+    "eventsTitle": "Events",
+    "viewAllEvents": "View full calendar",
+    "ctaEyebrow": "Let's hit the stage",
+    "ctaTitle": "Ready for your showtime?",
+    "ctaSubtitle": "Tell us the event type, date and services you need — we'll reply with a proposal within 12 hours.",
+    "ctaButton": "Request a Quote Now"
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "pillarsEyebrow": "Our Stage Direction",
+    "pillarsTitle": "What guides us",
+    "mission": "Mission",
+    "vision": "Vision",
+    "values": "Values"
+  },
+  "services": {
+    "eyebrow": "Assembly Order",
+    "title": "Services",
+    "subtitle": "Every discipline a live event needs, covered by one team, in the real order they come into play.",
+    "requestThisService": "Request a Quote for This Service",
+    "allServices": "All services",
+    "notFoundTitle": "Service not found"
+  },
+  "artists": {
+    "eyebrow": "Agency Line-up",
+    "title": "Artists",
+    "subtitle": "Artists represented by our agency, available for booking at private, corporate and festival events.",
+    "all": "All",
+    "unavailable": "Unavailable",
+    "available": "Available",
+    "noResults": "No artists found in this category.",
+    "requestThisArtist": "Request This Artist",
+    "categories": {
+      "dj": "DJ",
+      "banda": "Band",
+      "cantor": "Singer",
+      "danca": "Dance Group",
+      "humorista": "Comedian"
+    }
+  },
+  "events": {
+    "eyebrow": "Calendar",
+    "title": "Events",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "all": "All",
+    "noResults": "No events found with these filters.",
+    "notFoundTitle": "Event not found",
+    "allEvents": "All events",
+    "servicesUsed": "Services used at this event",
+    "artistsOnStage": "Artists on stage",
+    "wantEventLikeThis": "I Want an Event Like This",
+    "types": {
+      "corporativo": "Corporate",
+      "show": "Show/Concert",
+      "festival": "Festival",
+      "privado": "Private Event",
+      "casamento": "Wedding"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Stage Record",
+    "title": "Gallery",
+    "all": "All",
+    "photos": "Photos",
+    "videos": "Videos",
+    "noResults": "No items found."
+  },
+  "news": {
+    "eyebrow": "Backstage & Updates",
+    "title": "News",
+    "noResults": "No news published yet.",
+    "allNews": "All news",
+    "notFoundTitle": "Article not found"
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "title": "Contact",
+    "subtitle": "General questions, partnerships or applications — this is the direct line. For event requests, use Request a Quote instead.",
+    "directLine": "Direct Line",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Hours",
+    "hoursValue": "Monday to Friday · 9am – 6pm",
+    "fullName": "Full name",
+    "subject": "Subject",
+    "message": "Message",
+    "sending": "Sending…",
+    "send": "Send Message",
+    "success": "Message sent. We'll get back to you soon.",
+    "error": "Couldn't send it. Please try again."
+  },
+  "quote": {
+    "eyebrow": "Request a Quote",
+    "title": "Let's hit the stage",
+    "requestingArtist": "Requesting a quote for",
+    "steps": {
+      "eventType": "Event Type",
+      "services": "Services",
+      "details": "Details",
+      "contact": "Contact"
+    },
+    "step1Question": "What kind of event are we producing?",
+    "step2Question": "Which services do you need?",
+    "step2Hint": "You can pick more than one.",
+    "step3Title": "Event details",
+    "eventDate": "Planned date",
+    "guests": "Estimated number of guests",
+    "location": "Planned location",
+    "budgetRange": "Budget range",
+    "step4Title": "How should we reach you?",
+    "phone": "Phone",
+    "company": "Company (optional)",
+    "additionalMessage": "Additional message",
+    "back": "Back",
+    "continue": "Continue",
+    "confirm": "Confirm Request",
+    "sending": "Sending…",
+    "sendError": "Couldn't send it. Check the details and try again.",
+    "summaryTitle": "Request Summary",
+    "summaryType": "Type",
+    "summaryServices": "Services",
+    "summaryDate": "Date",
+    "summaryLocation": "Location",
+    "summaryBudget": "Budget",
+    "summaryName": "Name",
+    "summaryArtist": "Requested Artist",
+    "fullName": "Full name",
+    "email": "Email",
+    "eventTypes": {
+      "corporativo": "Corporate",
+      "show": "Show/Concert",
+      "festival": "Festival",
+      "casamento": "Wedding",
+      "privado": "Private Event",
+      "outro": "Other"
+    },
+    "budgetOptions": {
+      "ate_500k": "Up to 500,000 Kz",
+      "500k_2m": "500,000 – 2,000,000 Kz",
+      "2m_5m": "2,000,000 – 5,000,000 Kz",
+      "acima_5m": "Over 5,000,000 Kz",
+      "a_definir": "Not sure yet"
+    },
+    "successEyebrow": "Request Received",
+    "successTitle": "Live soon.",
+    "successText": "We've received your request. Our team will be in touch within 48 hours with a proposal tailored to your event.",
+    "successHint": "The PDF receipt was downloaded and a WhatsApp chat was opened — if you didn't see either, your browser may have blocked it. Use the buttons below.",
+    "downloadPdf": "Download Receipt (PDF)",
+    "openWhatsapp": "Open WhatsApp"
+  },
+  "footer": {
+    "tagline": "Event production and artist management in Angola. From briefing to the last light going out — we handle every cue.",
+    "company": "Company",
+    "rights": "ALL RIGHTS RESERVED"
+  }
+}

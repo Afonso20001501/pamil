@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowUpRight, Loader2 } from 'lucide-react';
 import { api } from '../../services/api.js';
 import { useApiData } from '../../hooks/useApiData.js';
 import { services as mockServices } from '../../data/mockData.js';
 
 export default function Services() {
+  const { t } = useTranslation();
   const { data: apiServices, loading, error } = useApiData(api.getServices, [], []);
 
-  // Se a API ainda não devolveu nada (erro ou lista vazia), usa os dados de
-  // exemplo para a secção nunca ficar em branco durante o desenvolvimento.
   const source = !loading && !error && apiServices.length > 0 ? apiServices : mockServices;
 
   const items = source.map((s, i) => ({
@@ -23,22 +23,21 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <div>
-            <span className="eyebrow !text-forest">Ordem de Montagem</span>
+            <span className="eyebrow !text-forest">{t('home.servicesEyebrow')}</span>
             <h2 className="mt-4 font-display text-6xl lg:text-7xl tracking-tightest text-forest uppercase">
-              Cada deixa,
+              {t('home.servicesTitle1')}
               <br />
-              coberta.
+              {t('home.servicesTitle2')}
             </h2>
           </div>
           <p className="text-sage max-w-sm text-sm leading-relaxed">
-            Do briefing ao encerramento das luzes, esta é a sequência real com que
-            construímos um evento — cada serviço entra exactamente quando o show precisa dele.
+            {t('home.servicesSubtitle')}
           </p>
         </div>
 
         {loading && (
           <div className="flex items-center gap-2 text-sage py-10">
-            <Loader2 size={16} className="animate-spin" /> A carregar serviços…
+            <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
           </div>
         )}
 

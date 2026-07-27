@@ -1,9 +1,14 @@
 // Camada de acesso à API Django (DRF). Base URL configurável por variável de ambiente.
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+import i18n from '../i18n/config.js';
 
 async function request(path, options = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept-Language': i18n.language || 'pt',
+      ...options.headers,
+    },
     ...options,
   });
   if (!res.ok) {

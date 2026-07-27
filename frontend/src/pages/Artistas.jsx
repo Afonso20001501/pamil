@@ -1,14 +1,25 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Loader2 } from 'lucide-react';
 import { api } from '../services/api.js';
-import { allArtists as mockArtists, artistCategories } from '../data/mockData.js';
+import { allArtists as mockArtists } from '../data/mockData.js';
 import VuMeter from '../components/ui/VuMeter.jsx';
 import { useApiData } from '../hooks/useApiData.js';
 import ArtistModal from '../components/ui/ArtistModal.jsx';
 
 export default function Artistas() {
+  const { t } = useTranslation();
   const [category, setCategory] = useState('');
   const [selectedArtist, setSelectedArtist] = useState(null);
+
+  const categoryOptions = [
+    { value: '', label: t('artists.all') },
+    { value: 'dj', label: t('artists.categories.dj') },
+    { value: 'banda', label: t('artists.categories.banda') },
+    { value: 'cantor', label: t('artists.categories.cantor') },
+    { value: 'danca', label: t('artists.categories.danca') },
+    { value: 'humorista', label: t('artists.categories.humorista') },
+  ];
 
   const query = category ? `?category=${category}` : '';
   const { data: apiArtists, loading, error } = useApiData(
@@ -27,13 +38,12 @@ export default function Artistas() {
           <VuMeter bars={30} className="h-3 text-cue/50" />
         </div>
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <span className="eyebrow">Line-up da Agência</span>
+          <span className="eyebrow">{t('artists.eyebrow')}</span>
           <h1 className="mt-4 font-display text-6xl lg:text-8xl tracking-tightest text-paper uppercase">
-            Artistas
+            {t('artists.title')}
           </h1>
           <p className="mt-6 text-paper/60 max-w-xl mx-auto">
-            Artistas representados pela nossa agência, disponíveis para contratação
-            em eventos privados, corporativos e festivais.
+            {t('artists.subtitle')}
           </p>
         </div>
       </section>
@@ -42,7 +52,7 @@ export default function Artistas() {
         <div className="max-w-7xl mx-auto px-6">
           {/* Filtro por categoria — estilo botões de canal de mesa de som */}
           <div className="flex flex-wrap gap-2 mb-12 border-b border-ink/10 pb-8">
-            {artistCategories.map((c) => (
+            {categoryOptions.map((c) => (
               <button
                 key={c.value}
                 onClick={() => setCategory(c.value)}
@@ -59,12 +69,12 @@ export default function Artistas() {
 
           {loading && (
             <div className="flex items-center gap-2 text-sage py-10">
-              <Loader2 size={16} className="animate-spin" /> A carregar artistas…
+              <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
             </div>
           )}
 
           {!loading && items.length === 0 && (
-            <p className="text-sage py-10">Nenhum artista encontrado nesta categoria.</p>
+            <p className="text-sage py-10">{t('artists.noResults')}</p>
           )}
 
           {!loading && items.length > 0 && (
@@ -84,7 +94,7 @@ export default function Artistas() {
 
                   {!a.is_available && (
                     <span className="absolute top-3 right-3 bg-ink/70 text-paper/80 font-mono text-[9px] tracking-widest2 uppercase px-2 py-1 rounded-sm">
-                      Indisponível
+                      {t('artists.unavailable')}
                     </span>
                   )}
 

@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Loader2, ArrowRight } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useApiData } from '../hooks/useApiData.js';
@@ -6,6 +7,7 @@ import { services as mockServices } from '../data/mockData.js';
 import CTAQuote from '../components/sections/CTAQuote.jsx';
 
 export default function ServicoDetalhe() {
+  const { t } = useTranslation();
   const { slug } = useParams();
 
   const { data: apiService, loading, error } = useApiData(
@@ -26,7 +28,7 @@ export default function ServicoDetalhe() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center text-sage gap-2">
-        <Loader2 size={18} className="animate-spin" /> A carregar…
+        <Loader2 size={18} className="animate-spin" /> {t('common.loading')}
       </div>
     );
   }
@@ -34,9 +36,9 @@ export default function ServicoDetalhe() {
   if (!service) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-6">
-        <h1 className="font-display text-5xl text-forest tracking-tightest">Serviço não encontrado</h1>
+        <h1 className="font-display text-5xl text-forest tracking-tightest">{t('services.notFoundTitle')}</h1>
         <Link to="/servicos" className="btn-primary mt-6 inline-flex">
-          Ver todos os serviços
+          {t('services.allServices')}
         </Link>
       </div>
     );
@@ -56,7 +58,7 @@ export default function ServicoDetalhe() {
 
         <div className="max-w-4xl mx-auto px-6 -mt-24 relative pb-16">
           <Link to="/servicos" className="inline-flex items-center gap-2 text-paper/60 hover:text-cue text-sm mb-6 transition-colors">
-            <ArrowLeft size={15} /> Todos os serviços
+            <ArrowLeft size={15} /> {t('services.allServices')}
           </Link>
           <span className="font-mono text-sm text-spotlight">{cueLabel}</span>
           <h1 className="mt-2 font-display text-6xl lg:text-7xl tracking-tightest text-paper uppercase leading-[0.9]">
@@ -66,7 +68,7 @@ export default function ServicoDetalhe() {
             {description}
           </p>
           <Link to="/pedido-de-orcamento" className="btn-primary mt-8 inline-flex">
-            Pedir Orçamento Deste Serviço <ArrowRight size={16} />
+            {t('services.requestThisService')} <ArrowRight size={16} />
           </Link>
         </div>
       </section>

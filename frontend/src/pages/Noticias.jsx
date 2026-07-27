@@ -1,16 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Loader2, ArrowRight } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useApiData } from '../hooks/useApiData.js';
 import { newsPosts as mockNews } from '../data/mockData.js';
 import VuMeter from '../components/ui/VuMeter.jsx';
 
-function formatDate(iso) {
-  const d = new Date(iso);
-  return d.toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' });
-}
-
 export default function Noticias() {
+  const { t, i18n } = useTranslation();
+  const dateLocale = i18n.language === 'en' ? 'en-GB' : 'pt-PT';
+
+  function formatDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString(dateLocale, { day: '2-digit', month: 'long', year: 'numeric' });
+  }
+
   const { data: apiNews, loading, error } = useApiData(api.getNews, [], []);
   const source = !loading && !error && apiNews.length > 0 ? apiNews : mockNews;
 
@@ -21,9 +25,9 @@ export default function Noticias() {
           <VuMeter bars={30} className="h-3 text-cue/50" />
         </div>
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <span className="eyebrow">Bastidores & Actualidade</span>
+          <span className="eyebrow">{t('news.eyebrow')}</span>
           <h1 className="mt-4 font-display text-6xl lg:text-8xl tracking-tightest text-paper uppercase">
-            Notícias
+            {t('news.title')}
           </h1>
         </div>
       </section>
@@ -32,12 +36,12 @@ export default function Noticias() {
         <div className="max-w-5xl mx-auto px-6">
           {loading && (
             <div className="flex items-center gap-2 text-sage py-10">
-              <Loader2 size={16} className="animate-spin" /> A carregar notícias…
+              <Loader2 size={16} className="animate-spin" /> {t('common.loading')}
             </div>
           )}
 
           {!loading && source.length === 0 && (
-            <p className="text-sage py-10">Ainda não há notícias publicadas.</p>
+            <p className="text-sage py-10">{t('news.noResults')}</p>
           )}
 
           {!loading && source.length > 0 && (
@@ -64,7 +68,7 @@ export default function Noticias() {
                     </h2>
                     <p className="text-sage text-sm mt-2 leading-relaxed">{post.excerpt}</p>
                     <span className="inline-flex items-center gap-1.5 text-forest text-sm font-medium mt-3">
-                      Ler mais <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      {t('common.readMore')} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
                 </Link>
